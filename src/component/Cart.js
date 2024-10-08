@@ -18,6 +18,7 @@ const Cart = () => {
         ) : (
             cartItem?.map((item , index) => (
                 <div key={index}>
+                <img src={item?.images[0]} height={100} style={{marginTop:"10px"}}/>
                 <h3>{item.title}</h3>
                 <p>Price : {item.price}</p>
                 </div>

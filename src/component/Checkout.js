@@ -13,14 +13,13 @@ const Checkout = () => {
         <Link style={{padding:'20px'}} to='/checkout' >Checkout</Link>
     </nav>
       <h2>Checkout</h2>
-      <ul>
         {cartItem?.map((item, index) => (
-          <li key={index}>
-            {item.title} - {item.price}
-          </li>
+          <div key={index}>
+          <img src={item?.images[0]} height={100} style={{marginTop:"10px"}}/>
+            <p>{item.title} - {item.price}</p>
+          </div>
         ))}
-      </ul>
-      <h3>TotalPrice : {totalPrice}</h3>
+      <h3 style={{marginTop : '30px' }}>TotalPrice : {totalPrice}</h3>
     </div>
   );
 };

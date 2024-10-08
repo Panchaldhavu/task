@@ -10,7 +10,9 @@ const Home = () => {
   const cartItem = useSelector((state) => state.cart.items);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(10);
+  const [productsPerPage] = useState(9);
+
+  console.log(items)
 
   useEffect(() => {
     dispatch(fetchProduct());
@@ -23,7 +25,7 @@ const Home = () => {
   // Function to handle page change
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
-    <div>
+    <div >
       <nav>
         <Link style={{ padding: "20px" }} to="/home">
           Home
@@ -38,9 +40,10 @@ const Home = () => {
       <h2>Products</h2>
       {status == "loading" && <p>Loading..</p>}
       {status == "success" && (
-        <div>
+        <div style={{display: 'flex' , flexWrap : "wrap" }}>
           {currentProducts?.map((product) => (
-            <div key={product.id}>
+            <div key={product.id} style={{minWidth : '33.33%'}}>
+            <img src={product?.images[0]} height={100} style={{marginTop:"10px"}}/>
               <h3>{product.title}</h3>
               <p>{product.price}</p>
               <button onClick={() => dispatch(addToCart(product))}>
@@ -51,7 +54,7 @@ const Home = () => {
         </div>
       )}
 
-      <div>
+      <div style={{marginTop : "40px"}}>
         {Array.from({ length: Math.ceil(items.length / productsPerPage) }, (_, i) => (
           <button
             key={i + 1}
