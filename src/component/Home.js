@@ -56,7 +56,6 @@ const Home = () => {
           <button
             key={i + 1}
             onClick={() => paginate(i + 1)}
-            className={currentPage === i + 1 ? 'active' : ''}
           >
             {i + 1}
           </button>
